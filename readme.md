@@ -1,10 +1,19 @@
-# Chat (with Node.js) 
-Implement a chat application (both client and server)
+### Chat (with Node.js)
 
-- You type a username and send it to the server
-- It is now username (save it in localStorage)
-- All the messages should have an author, time and text
-- Implement an ability to create rooms (create / rename / join / delete)
-- New user should see all prev messages in the room
+- Implemented advanced fullstack chat application.
 
-**Read [the guideline](https://github.com/mate-academy/js_task-guideline/blob/master/README.md) before start**
+### Technologies used:
+
+- Express
+- Prisma
+- Postgres
+
+### Approaches used:
+
+- Middleware for error handling
+- Custom error class, to improve detalization of errors
+- Detailed and easy understoodable structuration
+- Check repo to find more interesting things
+
+### To test the app, visit next site:
+[https://nodechatfront.vercel.app/]
