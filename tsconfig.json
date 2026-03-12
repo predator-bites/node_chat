@@ -8,6 +8,7 @@
     "esModuleInterop": true,
     // File Layout
     "outDir": "./dist",
+    "allowJs": true,
 
     // Environment Settings
     // See also https://aka.ms/tsconfig/module
@@ -41,6 +42,7 @@
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
     "skipLibCheck": true,
-    "allowImportingTsExtensions": true
+    "allowImportingTsExtensions": true,
+    "allowSyntheticDefaultImports": true
   }
 }
