@@ -17,7 +17,7 @@ export const createServer = () => {
   const client = process.env.CLIENT_URL;
 
   app.use(limiter);
-  // app.use(morgan('combined'));
+  app.use(morgan('combined'));
   app.use(
     cors({
       origin: client,

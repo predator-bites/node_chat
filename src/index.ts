@@ -5,9 +5,9 @@ import { prisma } from './db';
 
 export const emitter = new EventEmitter();
 
-const server = createServer().listen(3005, () => {
-  console.log('Server is working on 3005');
-});
+const PORT = process.env.PORT || 3005;
+
+const server = createServer().listen(PORT);
 
 const wss = new WebSocketServer({ server });
 
@@ -20,13 +20,9 @@ emitter.on('message', (data) => {
 });
 
 process.on('SIGTERM', async () => {
-  console.log('SIGTERM signal received');
-
   await prisma.$disconnect();
 
   server.close(() => {
-    console.log('Server closed gracefully');
-
     process.exit(0);
   });
 });
