@@ -1,6 +1,6 @@
 import EventEmitter from 'node:events';
 import { createServer } from './createServer';
-import { WebSocketServer } from 'ws';
+import { WebSocketServer, WebSocket } from 'ws';
 import { prisma } from './db';
 
 export const emitter = new EventEmitter();
