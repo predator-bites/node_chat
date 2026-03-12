@@ -26,14 +26,12 @@ type Room = {
   title: string;
 };
 
-type RawRoom = Pick<Room, 'title' | 'author'>
+type RawRoom = Pick<Room, 'title' | 'author'>;
 
 type PartialRawRoom = Partial<RawRoom>;
-
-
 
 type Update = {
   type: 'new' | 'update' | 'delete';
   to: 'rooms' | 'messages';
   data: Room | Message;
-}
+};

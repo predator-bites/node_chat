@@ -18,7 +18,7 @@ export class ApiError extends Error {
   }
 
   static conflict(messages: ErrorMessage[]) {
-    return new ApiError('Conflict', 409, { errors: messages});
+    return new ApiError('Conflict', 409, { errors: messages });
   }
 
   static internalServerError(messages: ErrorMessage[]) {
@@ -26,6 +26,6 @@ export class ApiError extends Error {
   }
 
   static forbidden(messages: ErrorMessage[]) {
-    return new ApiError('Access denied', 403, { errors: messages});
+    return new ApiError('Access denied', 403, { errors: messages });
   }
 }

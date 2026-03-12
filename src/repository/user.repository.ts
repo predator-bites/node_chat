@@ -1,31 +1,31 @@
-import { prisma } from "../db"
+import { prisma } from '../db';
 
 const create = (name: string) => {
   return prisma.user.create({
     data: {
       name,
-    }
-  })
-}
+    },
+  });
+};
 
 const getById = (id: string) => {
   return prisma.user.findFirst({
     where: {
-      id
-    }
-  })
-}
+      id,
+    },
+  });
+};
 
 const getByName = (name: string) => {
   return prisma.user.findFirst({
     where: {
-      name
-    }
-  })
-}
+      name,
+    },
+  });
+};
 
 export default {
   create,
   getById,
-  getByName
-}
+  getByName,
+};

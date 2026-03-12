@@ -9,7 +9,7 @@ const getMessages = async (req: Request, res: Response) => {
   const messages = await messageRepository.getMessages();
 
   if (!messages) {
-    throw ApiError.internalServerError([{ message: 'Internal server error'}])
+    throw ApiError.internalServerError([{ message: 'Internal server error' }]);
   }
 
   res.status(200).send(messages);
@@ -25,7 +25,7 @@ const create = async (req: Request, res: Response) => {
   const author = await userRepository.getById(userId);
 
   if (!author) {
-    throw ApiError.notFound([{ message: 'User not found'}])
+    throw ApiError.notFound([{ message: 'User not found' }]);
   }
 
   const rawMessage: RawMessage = { author: author.name, text };
@@ -41,7 +41,7 @@ const create = async (req: Request, res: Response) => {
   const message = await messageRepository.create(rawMessage);
 
   if (!message) {
-    throw ApiError.internalServerError([{ message: 'Internal server error'}]);
+    throw ApiError.internalServerError([{ message: 'Internal server error' }]);
   }
 
   emitter.emit('message', {

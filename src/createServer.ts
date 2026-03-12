@@ -22,7 +22,7 @@ export const createServer = () => {
     cors({
       origin: client,
       credentials: true,
-      allowedHeaders: '*'
+      allowedHeaders: '*',
     }),
   );
 
@@ -30,7 +30,7 @@ export const createServer = () => {
 
   app.use('/messages', messageRouter);
   app.use('/rooms', roomRouter);
-  app.use('/users/', userRouter)
+  app.use('/users/', userRouter);
 
   app.use(ErrorMiddleware);
 

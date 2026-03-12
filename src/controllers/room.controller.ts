@@ -16,7 +16,7 @@ const create = async (req: Request, res: Response) => {
   }
 
   if (!author) {
-    throw ApiError.notFound([{ message: 'User not found'}]);
+    throw ApiError.notFound([{ message: 'User not found' }]);
   }
 
   const rawRoom: RawRoom = {
@@ -27,7 +27,7 @@ const create = async (req: Request, res: Response) => {
   const room: Room = await roomRepository.create(rawRoom);
 
   if (!room) {
-    throw ApiError.internalServerError([{ message: 'Internal server error'}])
+    throw ApiError.internalServerError([{ message: 'Internal server error' }]);
   }
 
   emitter.emit('message', {
@@ -43,7 +43,7 @@ const deleteRoom = async (req: Request, res: Response) => {
   const { id } = req.params;
 
   if (!id || typeof id !== 'string') {
-    throw ApiError.badRequest([{ message: 'Room id is required'}])
+    throw ApiError.badRequest([{ message: 'Room id is required' }]);
   }
 
   await messageRepository.deleteMany(id);

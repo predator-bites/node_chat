@@ -27,6 +27,6 @@ process.on('SIGTERM', async () => {
   server.close(() => {
     console.log('Server closed gracefully');
 
-    process.exit(0)
-  })
-})
+    process.exit(0);
+  });
+});
