@@ -9,7 +9,7 @@
     "dev:build": "npm run build && node dist/index.js",
     "format": "prettier --ignore-path .prettierignore --write './src/**/*.{js,ts}'",
     "test": "npm run lint && npm run test:only",
-    "prod:setup": "npm ci && npx prisma migrate deploy && npm run build",
+    "prod:setup": "npm i && npx prisma migrate deploy && npx prisma generate && npm run build",
     "prod:start": "npm run start:build",
     "prod": "npm run prod:setup && npm run prod:start"
   },
