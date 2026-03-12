@@ -1,48 +1,28 @@
 {
-  // Visit https://aka.ms/tsconfig to read more about this file
-  "include": ["src", "/src/types/index.d.ts"],
   "compilerOptions": {
-    "module": "ESNext",
-    "moduleResolution": "bundler",
-    "target": "ES2023",
-    "esModuleInterop": true,
-    // File Layout
-    "outDir": "./dist",
+    /* Language and Environment */
+    "target": "ES2022",        // Modern JS features supported by current Node versions
+    "lib": ["ES2022"],
+
+    /* Modules */
+    "module": "CommonJS",      // Standard Node.js module system
+    "rootDir": "./src",        // Assuming your code is in a 'src' folder
+    "outDir": "./dist",        // Where compiled JS will go (if you build for production)
+    "esModuleInterop": true,   // Helps import standard CommonJS packages smoothly
+    "forceConsistentCasingInFileNames": true,
+    "types": ["node", "./src/types/index.d.ts"],
+    "allowSyntheticDefaultImports": true,
     "allowJs": true,
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    // For nodejs:
-    // "lib": ["esnext"],
-    "types": ["node", "./src/types/index.d.ts"],
-    // and npm install -D @types/node
-
-    // Other Outputs
-    "sourceMap": true,
-    "declaration": true,
-    "declarationMap": true,
-
-    // Stricter Typechecking Options
-    "noUncheckedIndexedAccess": true,
-    "exactOptionalPropertyTypes": true,
-    "noEmit": false,
-
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
-
-    // Recommended Options
-    "strict": true,
-    "verbatimModuleSyntax": true,
-    "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
-    "moduleDetection": "force",
-    "skipLibCheck": true,
-    "allowImportingTsExtensions": true,
-    "allowSyntheticDefaultImports": true
-  }
+    /* Type Checking */
+    "strict": true,            // Enables all strict type-checking options
+    "skipLibCheck": true       // Speeds up compilation by skipping types in node_modules
+  },
+  "ts-node": {
+    // These options are specifically for ts-node
+    "require": ["tsconfig-paths/register"], // Optional: helps if you use absolute path aliases
+    "transpileOnly": true                   // Speeds up execution by skipping type checking on run
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules"]
 }

@@ -1,5 +1,10 @@
 module.exports = {
-  extends: '@mate-academy/eslint-config',
+  parser: "@typescript-eslint/parser",
+
+  extends: [
+    '@mate-academy/eslint-config',
+    "plugin:@typescript-eslint/recommended"
+  ],
   env: {
     jest: true
   },
