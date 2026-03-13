@@ -1,4 +1,4 @@
-import type { Request, Response } from 'express';
+import type { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import roomRepository from '../repository/room.repository';
 import { ApiError } from '../utils/ApiError';
 import messageRepository from '../repository/message.repository';
@@ -6,7 +6,7 @@ import { filter } from '../utils/filterToUpdate';
 import { emitter } from '../index';
 import userRepository from '../repository/user.repository';
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: ExpressRequest, res: ExpressResponse) => {
   const { title, userId } = req.body;
 
   const author = await userRepository.getById(userId);
@@ -39,7 +39,7 @@ const create = async (req: Request, res: Response) => {
   res.status(201).send(room);
 };
 
-const deleteRoom = async (req: Request, res: Response) => {
+const deleteRoom = async (req: ExpressRequest, res: ExpressResponse) => {
   const { id } = req.params;
 
   if (!id || typeof id !== 'string') {
@@ -58,7 +58,7 @@ const deleteRoom = async (req: Request, res: Response) => {
   res.sendStatus(204);
 };
 
-const getMessages = async (req: Request, res: Response) => {
+const getMessages = async (req: ExpressRequest, res: ExpressResponse) => {
   const { id } = req.params;
 
   if (!id || typeof id !== 'string') {
@@ -70,7 +70,7 @@ const getMessages = async (req: Request, res: Response) => {
   res.status(200).send(messages);
 };
 
-const change = async (req: Request, res: Response) => {
+const change = async (req: ExpressRequest, res: ExpressResponse) => {
   const { id } = req.params;
   const rawToChange: PartialRawRoom = { title: req.body?.title };
 
@@ -95,7 +95,7 @@ const change = async (req: Request, res: Response) => {
   res.sendStatus(204);
 };
 
-const get = async (req: Request, res: Response) => {
+const get = async (req: ExpressRequest, res: ExpressResponse) => {
   const rooms = await roomRepository.get();
 
   res.status(200).send(rooms);

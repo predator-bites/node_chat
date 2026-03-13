@@ -1,12 +1,11 @@
-import type { NextFunction, Request, Response } from 'express';
+import type { NextFunction as ExpressNextFunction, Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import roomRepository from '../repository/room.repository';
 import { ApiError } from '../utils/ApiError';
 import userRepository from '../repository/user.repository';
-
 export const permissionMiddleware = async (
-  req: Request,
-  res: Response,
-  next: NextFunction,
+  req: ExpressRequest,
+  res: ExpressResponse,
+  next: ExpressNextFunction,
 ) => {
   const { id } = req.params;
   const userId = req.headers['x-userid'];

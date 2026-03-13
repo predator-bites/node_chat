@@ -1,11 +1,11 @@
-import type { Request, Response } from 'express';
+import type { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import messageRepository from '../repository/message.repository';
 import roomRepository from '../repository/room.repository';
 import { ApiError } from '../utils/ApiError';
 import { emitter } from '../index';
 import userRepository from '../repository/user.repository';
 
-const getMessages = async (req: Request, res: Response) => {
+const getMessages = async (req: ExpressRequest, res: ExpressResponse) => {
   const messages = await messageRepository.getMessages();
 
   if (!messages) {
@@ -15,7 +15,7 @@ const getMessages = async (req: Request, res: Response) => {
   res.status(200).send(messages);
 };
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: ExpressRequest, res: ExpressResponse) => {
   const { userId, text, roomId } = req.body;
 
   if (!userId || !text) {
@@ -53,7 +53,7 @@ const create = async (req: Request, res: Response) => {
   res.status(201).send(message);
 };
 
-const deleteMessage = async (req: Request, res: Response) => {
+const deleteMessage = async (req: ExpressRequest, res: ExpressResponse) => {
   const { id } = req.body;
 
   if (!id) {

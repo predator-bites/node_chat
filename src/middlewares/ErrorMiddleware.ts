@@ -1,11 +1,11 @@
-import type { NextFunction, Request, Response } from 'express';
+import type { NextFunction as ExpressNextFunction, Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import { ApiError } from '../utils/ApiError';
 
 export const ErrorMiddleware = (
   error: Error,
-  req: Request,
-  res: Response,
-  next: NextFunction,
+  req: ExpressRequest,
+  res: ExpressResponse,
+  next: ExpressNextFunction,
 ) => {
   if (error instanceof ApiError) {
     res.statusCode = error.status;

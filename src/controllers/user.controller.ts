@@ -1,8 +1,8 @@
-import type { Request, Response } from 'express';
+import type { Request as ExpressRequest, Response as ExpressResponse } from 'express';
 import userRepository from '../repository/user.repository';
 import { ApiError } from '../utils/ApiError';
 
-const create = async (req: Request, res: Response) => {
+const create = async (req: ExpressRequest, res: ExpressResponse) => {
   const { userName } = req.body;
 
   if (!userName) {
